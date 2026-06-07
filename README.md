@@ -1,105 +1,92 @@
+# LabSec8 - Analyse statique Android
 
-📦 LabSec08-Workspace
- ┣ 📂 00-scope       # Périmètre de l'analyse, APK source et validation de l'intégrité
- ┣ 📂 01-bevigil     # Collecte d'informations exposées et OSINT applicatif
- ┣ 📂 02-yaazhini    # Résultats de l'analyse statique automatisée
- ┣ 📂 03-triage      # Consolidation, déduplication et contextualisation des risques
- ┗ 📂 04-report      # Livrables finaux et rapports de synthèse
+## Auteur
 
-```
+Youssef CHARAF
 
-> 📝 **Indicateurs de traçabilité :** Les fichiers `analyse_info.txt` et `commands.log` consignent de manière immuable les configurations de l'environnement, l'identité des artefacts manipulés ainsi que l'historique complet des commandes exécutées.
+## Objectif
 
----
+Ce lab presente une analyse statique encadree de l'APK pedagogique OWASP MSTG UnCrackable Level 1. Le travail couvre le perimetre, la tracabilite, l'identification de l'artefact, l'analyse avec BeVigil et Yaazhini, puis le triage des constats.
 
-## ⚙️ Méthodologie d'Analyse Étape par Étape
+## Cible
 
-### 1. Cadrage & Intégrité (`00-scope`)
+- APK: `UnCrackable-Level1.apk`
+- Hash SHA-256: `1DA8BF57D266109F9A07C01BF7111A1975CE01F190B9D914BCD3AE3DBEF96F21`
+- Provenance: support de cours
+- Environnement: Windows 11 Pro
 
-Le processus débute par l'isolation de l'APK dans le répertoire de scope. Un calcul d'empreinte cryptographique **SHA-256** est systématiquement effectué. Cette étape critique assure l'intégrité de la cible tout au long du cycle de vie de l'analyse et certifie que les résultats produits correspondent de manière univoque à l'artefact audité.
+## Demarche
 
-### 2. Renseignement & OSINT Externe (`01-bevigil`)
+Le dossier `00-scope` contient le perimetre de l'analyse. Il precise que la cible est un APK pedagogique autorise et que le travail reste limite au cadre du lab.
 
-Utilisation de la plateforme **BeVigil** pour extraire une première cartographie des métadonnées, des permissions demandées et des potentielles chaînes de caractères sensibles (clés d'API, endpoints, configurations) exposées publiquement ou structurellement au sein de l'application.
+Le workspace est organise en dossiers separes: `00-scope`, `01-bevigil`, `02-yaazhini`, `03-triage` et `04-report`. Les fichiers `analyse_info.txt` et `commands.log` gardent la trace de l'environnement, de l'artefact et des commandes importantes.
 
-### 3. Analyse Statique Automatisée (`02-yaazhini`)
+L'APK est copiee dans le dossier de scope, puis son hash SHA-256 est calcule. Ce hash identifie l'artefact analyse et permet de verifier que les resultats correspondent au bon fichier.
 
-Déploiement de l'outil **Yaazhini** afin d'auditer en profondeur le code décompilé, le fichier `AndroidManifest.xml` et les ressources embarquées. Cette phase met en évidence les faiblesses de configuration, les API non sécurisées et les mauvaises pratiques de développement.
+BeVigil est utilise pour obtenir une premiere vue des informations exposees autour de l'application. Les resultats sont conserves comme pistes d'analyse.
 
-### 4. Triage Évolué & Cartographie OWASP MASVS (`03-triage`)
+Yaazhini est utilise pour analyser le contenu de l'APK. Les resultats sont consultes pour relever les categories de risque et preparer le triage.
 
-Phase de post-traitement consistant à consolider les alertes issues de BeVigil et Yaazhini. Ce processus permet de :
+Les constats sont consolides dans le triage afin d'eviter les doublons entre les outils. Les elements importants sont ensuite relies aux categories OWASP MASVS lorsque la correspondance est pertinente.
 
-* Éliminer les faux positifs et les doublons d'outils.
-* Qualifier l'impact réel de chaque constat.
-* Corréler les vulnérabilités retenues avec le référentiel de sécurité mobile **OWASP MASVS** (Mobile Application Security Verification Standard).
+## Auteur
 
----
+Youssef CHARAF
 
-## 📸 Registre des Preuves & Journal de Bord
+## Preuves
 
-### Phase 01 : Initialisation & Structure du Périmètre
+### Dossier de scope
 
-#### 🔹 Définition du Scope Applicatif
+![Dossier scope](<screens/Capture d'écran 2026-06-01 093752.png>)
 
-L'artefact d'origine est isolé de manière étanche pour prévenir toute contamination ou modification accidentelle.
+L'APK est placee dans le dossier de perimetre. Cette organisation separe clairement l'artefact autorise du reste de l'analyse.
 
+### Structure du workspace
 
-#### 🔹 Organisation du Plan de Travail
+![Structure du workspace](<screens/Capture d'écran 2026-06-01 093533.png>)
 
-Une arborescence compartimentée est mise en place pour structurer rigoureusement chaque phase du projet.
+Les dossiers du lab sont separes par etape: scope, BeVigil, Yaazhini, triage et rapport.
 
+### Preparation des fichiers
 
-#### 🔹 Fichiers de Reproductibilité
+![Preparation](<screens/Capture d'écran 2026-06-01 093606.png>)
 
-Préparation des descripteurs de contexte pour garantir un suivi d'audit transparent et auditable.
+La structure et les fichiers de tracabilite sont prepares afin de garder une analyse reproductible.
 
+### Informations d'analyse
 
-#### 🔹 Métadonnées de l'Environnement
+![Informations analyse](<screens/Capture d'écran 2026-06-01 093711.png>)
 
-Consignation formelle de la date, de la version du système, de l'identité de la cible et du profil de l'analyste.
+Le fichier d'information regroupe la date, l'analyste, la cible, le hash et l'environnement.
 
+### Hash de l'APK
 
-#### 🔹 Empreinte Cryptographique (SHA-256)
+![Hash APK](<screens/Capture d'écran 2026-06-01 093738.png>)
 
-Validation de la signature de l'APK via un calcul de hash cryptographique univoque.
+Le hash SHA-256 de l'APK est calcule et documente. Il sert d'identifiant unique pour l'artefact analyse.
 
+### Resultat BeVigil
 
----
+![BeVigil](<screens/Capture d'écran 2026-06-01 095300.png>)
 
-### Phase 02 : Évaluation & Triage des Vulnérabilités
+BeVigil donne une vue synthetique des signaux de securite associes a l'application.
 
-#### 🔹 Signaux de Sécurité Externe (BeVigil)
+### Analyse Yaazhini
 
-Vue synthétique des premiers indicateurs de risques et des surfaces d'exposition détectées en ligne.
+![Yaazhini tableau](<screens/Capture d'écran 2026-06-01 095324.png>)
 
+Yaazhini presente les resultats dans un tableau qui facilite la lecture des constats.
 
-#### 🔹 Cartographie Matricielle des Risques (Yaazhini)
+### Synthese Yaazhini
 
-Extraction des anomalies de sécurité sous forme de matrice tabulaire facilitant la lecture des failles de code.
+![Yaazhini synthese](<screens/Capture d'écran 2026-06-01 095334.png>)
 
+La synthese Yaazhini resume les categories detectees et sert de base au triage.
 
-#### 🔹 Synthèse Exécutive des Détections
+## Resultat
 
-Compilation globale des sévérités identifiées par l'outil, servant de base de travail pour la phase de triage final.
+Le lab produit un workspace structure, un artefact identifie par hash, des resultats BeVigil et Yaazhini, puis une base de triage exploitable pour relier les constats aux references OWASP.
 
+## Auteur
 
----
-
-## 🏆 Livrables & Résultats Obtenus
-
-À l'issue de ce laboratoire, les objectifs suivants ont été pleinement atteints :
-
-1. **Workspace standardisé** et structuré selon les meilleures pratiques de l'ingénierie de sécurité.
-2. **Identification formelle** de la cible par hachage cryptographique non répudiable.
-3. **Collecte brute** des télémétries de vulnérabilité via des technologies complémentaires (BeVigil & Yaazhini).
-4. **Matrice de triage opérationnelle** prête pour la remédiation, établissant un pont direct avec les exigences de conformité **OWASP MASVS**.
-"""
-
-
-
-* **Structuration Technique** : Le contenu est maintenant divisé de manière logique (Fiche technique, Objectifs, Architecture, Méthodologie, Journal de bord) pour faciliter la lecture.
-* **Vocabulaire d'Ingénierie** : Le ton a été revu pour adopter un vocabulaire propre à la cyber-défense (ex: "Empreinte cryptographique", "Triage évolué", "Cartographie OWASP MASVS", "Intégrité").
-* **Préservation des Preuves** : Les liens vers vos captures d'écran ont été conservés exactement comme dans votre texte d'origine afin que les images s'affichent correctement dans votre répertoire.
-
-```
+Youssef CHARAF
