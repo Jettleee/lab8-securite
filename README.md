@@ -37,49 +37,56 @@ Youssef CHARAF
 
 ### Dossier de scope
 
-![Dossier scope](<screens/Capture d'écran 2026-06-01 093752.png>)
+<img width="188" height="63" alt="image" src="https://github.com/user-attachments/assets/3a0f9dd2-6ca9-4abb-8e86-ed305e0e7b83" />
+
 
 L'APK est placee dans le dossier de perimetre. Cette organisation separe clairement l'artefact autorise du reste de l'analyse.
 
 ### Structure du workspace
 
-![Structure du workspace](<screens/Capture d'écran 2026-06-01 093533.png>)
+<img width="205" height="290" alt="image" src="https://github.com/user-attachments/assets/b4af35f1-5c6e-4898-89b8-569e879b30f1" />
+
 
 Les dossiers du lab sont separes par etape: scope, BeVigil, Yaazhini, triage et rapport.
 
 ### Preparation des fichiers
 
-![Preparation](<screens/Capture d'écran 2026-06-01 093606.png>)
+<img width="663" height="640" alt="image" src="https://github.com/user-attachments/assets/a7444f28-151a-409c-9e54-ec16f3cdc6ae" />
+
 
 La structure et les fichiers de tracabilite sont prepares afin de garder une analyse reproductible.
 
 ### Informations d'analyse
 
-![Informations analyse](<screens/Capture d'écran 2026-06-01 093711.png>)
+<img width="679" height="123" alt="image" src="https://github.com/user-attachments/assets/50a7404a-0ce7-4330-ae51-af9ea4f063a0" />
+
 
 Le fichier d'information regroupe la date, l'analyste, la cible, le hash et l'environnement.
 
 ### Hash de l'APK
 
-![Hash APK](<screens/Capture d'écran 2026-06-01 093738.png>)
+<img width="598" height="20" alt="image" src="https://github.com/user-attachments/assets/35821792-6c48-40af-b0ae-41f9f9727ced" />
+
 
 Le hash SHA-256 de l'APK est calcule et documente. Il sert d'identifiant unique pour l'artefact analyse.
 
 ### Resultat BeVigil
 
-![BeVigil](<screens/Capture d'écran 2026-06-01 095300.png>)
+<img width="913" height="445" alt="image" src="https://github.com/user-attachments/assets/3e38b455-6dd6-4ce9-88ac-ac514d43f21c" />
 
 BeVigil donne une vue synthetique des signaux de securite associes a l'application.
 
 ### Analyse Yaazhini
 
-![Yaazhini tableau](<screens/Capture d'écran 2026-06-01 095324.png>)
+<img width="860" height="329" alt="image" src="https://github.com/user-attachments/assets/743fee80-0269-4e3d-ba03-6c1afa794082" />
+
 
 Yaazhini presente les resultats dans un tableau qui facilite la lecture des constats.
 
 ### Synthese Yaazhini
 
-![Yaazhini synthese](<screens/Capture d'écran 2026-06-01 095334.png>)
+<img width="798" height="249" alt="image" src="https://github.com/user-attachments/assets/f12148ea-3dc7-4833-91c4-7699dd418c1e" />
+
 
 La synthese Yaazhini resume les categories detectees et sert de base au triage.
 
